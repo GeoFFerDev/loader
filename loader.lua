@@ -1,7 +1,7 @@
 -- This is what users paste into Delta
 
 -- 1. Fetch your GameList database from GitHub
-local database_url = "https://raw.githubusercontent.com/GeoFFerDev/.../GameList.lua"
+local database_url = "https://raw.githubusercontent.com/GeoFFerDev/Loader2/refs/heads/main/Loader2.lua"
 local Games = loadstring(game:HttpGet(database_url))()
 
 -- 2. Check if the game they are currently playing is in your database
