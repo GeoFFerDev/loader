@@ -1,17 +1,24 @@
--- This goes in loader.lua
-local payload_url = "https://raw.githubusercontent.com/GeoFFerDev/hpspy/refs/heads/main/hpspy.lua" -- Put the raw link to the scrambled script here
+-- This is what users paste into Delta
 
-local success, response = pcall(function()
-    return game:HttpGet(payload_url)
-end)
+-- 1. Fetch your GameList database from GitHub
+local database_url = "https://raw.githubusercontent.com/GeoFFerDev/.../GameList.lua"
+local Games = loadstring(game:HttpGet(database_url))()
 
-if success then
-    local func, err = loadstring(response)
-    if func then
-        func()
+-- 2. Check if the game they are currently playing is in your database
+local script_url = Games[game.PlaceId]
+
+if script_url then
+    -- 3. If the game is supported, download and run the obfuscated VM
+    local success, result = pcall(function()
+        return game:HttpGet(script_url)
+    end)
+
+    if success then
+        loadstring(result)()
     else
-        warn("Failed to load script: " .. tostring(err))
+        warn("Failed to load script. Check your internet connection.")
     end
 else
-    warn("Failed to download script. Check your internet connection.")
+    -- 4. If the game is not in the list, tell the user
+    warn("This game is not currently supported by GeoFFerDev's Hub!")
 end
