@@ -1,7 +1,7 @@
 -- === GEOFFERDEV'S HUB LOADER ===
 
 -- 1. Point to your new 'Loader2' file on GitHub (with the cache bypass trick)
-local database_url = "https://raw.githubusercontent.com/GeoFFerDev/loader/main/Loader2.lua?nocache=" .. tostring(os.time())
+local database_url = "https://raw.githubusercontent.com/GeoFFerDev/refs/heads/main/Loader2.lua?nocache=" .. tostring(os.time())
 
 -- Fetch the database safely
 local successDB, Games = pcall(function()
